@@ -1,0 +1,4 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+INCLUDE $HPEESOF_DIR/oalibs/dsp.defs
+DEFINE Coupler_Ideal_TRL_lib Coupler_Ideal_TRL_lib
+ASSIGN Coupler_Ideal_TRL_lib libMode shared

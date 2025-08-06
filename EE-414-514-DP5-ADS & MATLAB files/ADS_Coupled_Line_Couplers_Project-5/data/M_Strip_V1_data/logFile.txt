@@ -1,0 +1,17 @@
+
+hpeesofsim (*) 595.shp Oct 31 2023, MINT version 5
+    (64-bit windows built: Tue Oct 31, 2023 22:23:19 +0000)
+
+
+***** Simulation started at Wed May  8 14:57:19 2024
+      Running on host: "LAPTOP-PGPK6ETP"
+      In Directory: "E:\Design Project-5\EE-414-514-DP5-ADS & MATLAB files\ADS_Coupled_Line_Couplers_Project-5\data"
+      Process ID: 33176
+
+
+SP SP1[1] <Coupler_Ideal_TRL_lib:M Strip V1:schematic>   freq=(3 GHz->7 GHz)
+
+
+Resource usage:
+  Total stopwatch time     =     2.48 seconds.
+

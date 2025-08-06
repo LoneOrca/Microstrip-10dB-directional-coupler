@@ -1,0 +1,40 @@
+; Top Design: "Coupler_Ideal_TRL_lib:M Strip V2:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="Coupler_Ideal_TRL_lib:M Strip V2:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+S_Param:SP1 CalcS=yes CalcY=no CalcZ=no GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz DevOpPtLevel=0 SPSS_WSP=yes \
+SweepVar="freq" SweepPlan="SP1_stim" OutputPlan="SP1_Output" 
+
+SweepPlan: SP1_stim Start=3 GHz Stop=7 GHz Step=10 MHz 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+Port:Term2  N__18 0 Num=2 Z=50 Ohm Noise=yes 
+Port:Term1  N__2 0 Num=1 Z=50 Ohm Noise=yes 
+
+;#@# autodisplay="S_Params_Quad_dB_Smith"
+MLIN2:TL2  N__18 N__21 Subst="MSub1" W=W0 L=L0 Wall1=1.0E+30 mil Wall2=1.0E+30 mil Mod=1 
+Port:Term3  N__20 0 Num=3 Z=50 Ohm Noise=yes 
+Port:Term4  N__4 0 Num=4 Z=50 Ohm Noise=yes 
+MLIN2:TL1  N__2 N__3 Subst="MSub1" W=W0 L=L0 Wall1=1.0E+30 mil Wall2=1.0E+30 mil Mod=1 
+MLIN2:TL3  N__1 N__20 Subst="MSub1" W=W0 L=L0 Wall1=1.0E+30 mil Wall2=1.0E+30 mil Mod=1 
+MLIN2:TL4  N__16 N__4 Subst="MSub1" W=W0 L=L0 Wall1=1.0E+30 mil Wall2=1.0E+30 mil Mod=1 
+MCLIN:CLin1  N__7 N__13 N__12 N__19 Subst="MSub1" W=Wc S=Sc L=Lc 
+model MSub1 MSUB H=1.27 mm Er=10.7 Mur=1 Cond=5.8e+7 Hu=1e+33 mm T=18 um TanD=0.0023 Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+
+W0=1.136700 mm
+L0=3.677700 mm
+Wc=0.937293 mm
+Sc=0.451909 mm
+Lc=5.687960 mm
+MSOBND:Bend1  N__13 N__3 Subst="MSub1" W=Wc 
+MSOBND:Bend2  N__21 N__12 Subst="MSub1" W=Wc 
+MSOBND:Bend3  N__1 N__7 Subst="MSub1" W=Wc 
+MSOBND:Bend4  N__19 N__16 Subst="MSub1" W=Wc 
